@@ -1,0 +1,1303 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SXYZ RAFF V2 - Cyber Security</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Reset Dasar */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #0d1222;
+            color: #fff;
+            line-height: 1.6;
+            /* Animasi Scrolling */
+            scroll-behavior: smooth;
+        }
+
+        /* --- Header Aplikasi (SXYZ RAFF V2) --- */
+        .app-header {
+            background-color: rgba(13, 18, 34, 0.95);
+            color: #fff;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 15px;
+            padding-right: 15px;
+            border-bottom: 1px solid #ffffff;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+        }
+
+        /* --- STYLING UNTUK GAMBAR LOGO --- */
+        .header-logo-image {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            background-color: transparent;
+        }
+
+        .header-title-container {
+            margin-left: 0px;
+        }
+
+        .app-title {
+            font-weight: 700;
+            font-size: 1.4em;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .app-subtitle {
+            font-size: 1em;
+            color: #aaa;
+            line-height: 1;
+        }
+
+        .app-menu-icon {
+            font-size: 1.8em;
+            cursor: pointer;
+        }
+
+        /* --- Area Konten Utama --- */
+        .main-content {
+            background-color: #0d1222;
+            padding-top: 105px;
+            padding-bottom: 90px;
+            padding-left: 20px;
+            padding-right: 20px;
+            min-height: calc(100vh - 165px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Contoh Latar Belakang (agar efek blur terlihat) */
+        .main-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('');
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* -------------------------------------- */
+        /* KOTAK KONTEN UTAMA (Welcome Card) */
+        /* -------------------------------------- */
+        .welcome-card {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 450px;
+q            background-color: #1a2233;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+            margin-bottom: 0;
+        }
+
+        .welcome-box {
+            display: flex;
+            gap: 15px;
+        }
+
+        .blue-bar {
+            width: 5px;
+            background-color: #00ffff;
+            border-radius: 3px;
+            height: 100%;
+            min-height: 150px;
+        }
+
+        .text-content {
+            flex-grow: 1;
+        }
+
+        .welcome-text {
+            color: #00ffff;
+            font-size: 0.8em;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .welcome-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .welcome-title strong {
+            color: #fff;
+        }
+
+        .welcome-description {
+            font-weight: 300;
+            color: #ccc;
+            font-size: 0.95em;
+        }
+
+        /* --- MENU GRID TENGAH --- */
+        .menu-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 450px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #1a2233;
+            padding: 15px 5px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            transition: background-color 0.3s;
+            height: 100px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item:hover {
+            background-color: #00ffff30;
+        }
+
+        .menu-icon {
+            font-size: 2em;
+            color: #00ffff;
+            margin-bottom: 5px;
+        }
+
+        .menu-label {
+            font-size: 0.75em;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* -------------------------------------- */
+        /* KOTAK UTILITY (Source Code, Enkripsi, Downloader) */
+        /* -------------------------------------- */
+        .utility-menu-container {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        /* Tambahkan margin bawah untuk memisahkan antar kotak utility */
+        .utility-menu-container+.utility-menu-container {
+            margin-top: 20px;
+        }
+
+        /* Gaya dasar untuk semua kotak utility */
+        .utility-box {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 20px;
+            background-color: #1a2233;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        .utility-box.collapsed {
+            max-height: 60px;
+            padding-bottom: 20px;
+        }
+
+        .utility-box h3 {
+            font-size: 1.1em;
+            color: #00ffff;
+            text-align: left;
+            cursor: default;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0;
+        }
+
+        .utility-box h3 i {
+            margin-right: 8px;
+        }
+
+        .utility-box h3 span {
+            flex-grow: 1;
+            text-align: left;
+            margin-left: 10px;
+        }
+
+        /* KOTAK INFORMASI BESAR BARU */
+        .large-info-box {
+            min-height: 250px;
+            padding: 25px;
+            background-color: #1a2233;
+        }
+
+        /* KONTEN KOTAK BESAR */
+        .large-info-box .box-content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .large-info-box .box-content h4 {
+            color: #00ffff;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        /* GRID KHUSUS UNTUK TOOL (3x3) */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3 kolom */
+            gap: 10px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Styling untuk tool item di dalam kotak besar */
+        .tool-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #0d1222;
+            /* Warna latar belakang tool */
+            padding: 10px 5px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #fff;
+            transition: background-color 0.3s;
+            height: 80px;
+            /* Tinggi lebih kecil dari menu utama */
+            border: 1px solid #00ffff50;
+        }
+
+        .tool-item:hover {
+            background-color: #00ffff20;
+        }
+
+        .tool-icon {
+            font-size: 1.5em;
+            color: #00ffff;
+            margin-bottom: 4px;
+        }
+
+        .tool-label {
+            font-size: 0.7em;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+
+        /* -------------------------------------- */
+        /* KOTAK EDUKASI */
+        /* -------------------------------------- */
+        .education-box {
+            padding: 25px;
+            min-height: unset;
+        }
+
+        .education-box h4 {
+            color: #fff;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #00ffff50;
+            padding-bottom: 5px;
+        }
+
+        /* Style untuk container gambar */
+        .education-image-container {
+            width: 100%;
+            height: 150px;
+            /* Tinggi gambar agar terlihat menonjol */
+            background-color: #0d1222;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ffff;
+            font-weight: 600;
+            font-size: 0.9em;
+            border: 2px dashed #00ffff50;
+            text-align: center;
+        }
+
+        /* Style untuk daftar edukasi */
+        .education-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .education-list li {
+            background-color: #101525;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .education-list li i {
+            color: #00ffff;
+            margin-right: 10px;
+            margin-top: 2px;
+            font-size: 1em;
+            min-width: 15px;
+        }
+
+        /* Sisanya tetap sama (Input, Code Area, Button) */
+        .util-input-url {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 2px solid #00ffff;
+            background-color: #0d1222;
+            color: #ffffff;
+            font-size: 0.95em;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+            transition: box-shadow 0.3s, border-color 0.3s;
+            text-align: center;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #2b3548;
+            padding: 8px 10px;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            margin-top: 15px;
+            border-bottom: 1px solid #00ffff50;
+        }
+
+        .encryption-menu button,
+        .downloader-menu button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #00ffff;
+            color: #0d1222;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
+            text-transform: uppercase;
+        }
+
+        /* --- Footer Navigasi Aplikasi Bawah --- */
+        .app-footer-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000000;
+            border-top: 1px solid #1a2233;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .app-footer-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #999;
+            font-size: 0.7em;
+            padding: 5px;
+        }
+
+        /* Memberi warna hijau khas WhatsApp pada ikon jika aktif (opsional) */
+        .app-footer-nav a .fa-whatsapp {
+            /* Contoh: Mengubah warna menjadi hijau jika aktif */
+            /* Anda dapat menghapus ini jika ingin tetap menggunakan warna default .active */
+            /* color: #25D366; */
+        }
+        
+        /* --- Footer Hak Cipta (Paling Bawah) --- */
+        .copyright-footer {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #0d1222;
+            text-align: center;
+            /* Jarak agar tidak bertabrakan dengan fixed footer nav */
+            margin-top: 20px; 
+            margin-bottom: 70px; /* Diperlukan agar terlihat di atas fixed footer nav */
+        }
+
+        .copyright-footer p {
+            font-size: 0.7em;
+            color: #444; /* Warna abu-abu gelap agar tidak terlalu jelas */
+            font-weight: 300; /* Tipis */
+            opacity: 0.7; /* Sedikit transparan */
+            margin: 0;
+        }
+
+        /* ====================================== */
+  /* --- STYLING UNTUK GAMBAR LOGO --- */
+        .header-logo-image {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+            background-color: transparent;
+        }
+
+        .header-title-container {
+            margin-left: 0px;
+        }
+
+        .app-title {
+            font-weight: 700;
+            font-size: 1.4em;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        .app-subtitle {
+            font-size: 1em;
+            color: #aaa;
+            line-height: 1;
+        }
+
+        .app-menu-icon {
+            font-size: 1.8em;
+            cursor: pointer;
+        }
+
+        /* --- Area Konten Utama --- */
+        .main-content {
+            background-color: #0d1222;
+            padding-top: 105px;
+            padding-bottom: 90px;
+            padding-left: 20px;
+            padding-right: 20px;
+            min-height: calc(100vh - 165px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        /* Contoh Latar Belakang (agar efek blur terlihat) */
+        .main-content::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('');
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* -------------------------------------- */
+        /* KOTAK KONTEN UTAMA (Welcome Card) */
+        /* -------------------------------------- */
+        .welcome-card {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 450px;
+            background-color: #1a2233;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+            margin-bottom: 0;
+        }
+
+        .welcome-box {
+            display: flex;
+            gap: 15px;
+        }
+
+        .blue-bar {
+            width: 5px;
+            background-color: #00ffff;
+            border-radius: 3px;
+            height: 100%;
+            min-height: 150px;
+        }
+
+        .text-content {
+            flex-grow: 1;
+        }
+
+        .welcome-text {
+            color: #00ffff;
+            font-size: 0.8em;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .welcome-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .welcome-title strong {
+            color: #fff;
+        }
+
+        .welcome-description {
+            font-weight: 300;
+            color: #ccc;
+            font-size: 0.95em;
+        }
+
+        /* --- MENU GRID TENGAH --- */
+        .menu-container {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 450px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #1a2233;
+            padding: 15px 5px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            transition: background-color 0.3s;
+            height: 100px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item:hover {
+            background-color: #00ffff30;
+        }
+
+        .menu-icon {
+            font-size: 2em;
+            color: #00ffff;
+            margin-bottom: 5px;
+        }
+
+        .menu-label {
+            font-size: 0.75em;
+            font-weight: 600;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        /* -------------------------------------- */
+        /* KOTAK UTILITY (Source Code, Enkripsi, Downloader) */
+        /* -------------------------------------- */
+        .utility-menu-container {
+            width: 100%;
+            max-width: 450px;
+        }
+
+        /* Tambahkan margin bawah untuk memisahkan antar kotak utility */
+        .utility-menu-container+.utility-menu-container {
+            margin-top: 20px;
+        }
+
+        /* Gaya dasar untuk semua kotak utility */
+        .utility-box {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            padding: 20px;
+            background-color: #1a2233;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            transition: max-height 0.3s ease-out;
+            overflow: hidden;
+        }
+
+        .utility-box.collapsed {
+            max-height: 60px;
+            padding-bottom: 20px;
+        }
+
+        .utility-box h3 {
+            font-size: 1.1em;
+            color: #00ffff;
+            text-align: left;
+            cursor: default;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0;
+        }
+
+        .utility-box h3 i {
+            margin-right: 8px;
+        }
+
+        .utility-box h3 span {
+            flex-grow: 1;
+            text-align: left;
+            margin-left: 10px;
+        }
+
+        /* KOTAK INFORMASI BESAR BARU */
+        .large-info-box {
+            min-height: 250px;
+            padding: 25px;
+            background-color: #1a2233;
+        }
+
+        /* KONTEN KOTAK BESAR */
+        .large-info-box .box-content {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .large-info-box .box-content h4 {
+            color: #00ffff;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        /* GRID KHUSUS UNTUK TOOL (3x3) */
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* 3 kolom */
+            gap: 10px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Styling untuk tool item di dalam kotak besar */
+        .tool-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #0d1222;
+            /* Warna latar belakang tool */
+            padding: 10px 5px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: #fff;
+            transition: background-color 0.3s;
+            height: 80px;
+            /* Tinggi lebih kecil dari menu utama */
+            border: 1px solid #00ffff50;
+        }
+
+        .tool-item:hover {
+            background-color: #00ffff20;
+        }
+
+        .tool-icon {
+            font-size: 1.5em;
+            color: #00ffff;
+            margin-bottom: 4px;
+        }
+
+        .tool-label {
+            font-size: 0.7em;
+            font-weight: 500;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+
+        /* -------------------------------------- */
+        /* KOTAK EDUKASI */
+        /* -------------------------------------- */
+        .education-box {
+            padding: 25px;
+            min-height: unset;
+        }
+
+        .education-box h4 {
+            color: #fff;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #00ffff50;
+            padding-bottom: 5px;
+        }
+
+        /* Style untuk container gambar */
+        .education-image-container {
+            width: 100%;
+            height: 150px;
+            /* Tinggi gambar agar terlihat menonjol */
+            background-color: #0d1222;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #00ffff;
+            font-weight: 600;
+            font-size: 0.9em;
+            border: 2px dashed #00ffff50;
+            text-align: center;
+        }
+
+        /* Style untuk daftar edukasi */
+        .education-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .education-list li {
+            background-color: #101525;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .education-list li i {
+            color: #00ffff;
+            margin-right: 10px;
+            margin-top: 2px;
+            font-size: 1em;
+            min-width: 15px;
+        }
+
+        /* Sisanya tetap sama (Input, Code Area, Button) */
+        .util-input-url {
+            width: 100%;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border: 2px solid #00ffff;
+            background-color: #0d1222;
+            color: #ffffff;
+            font-size: 0.95em;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+            transition: box-shadow 0.3s, border-color 0.3s;
+            text-align: center;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #2b3548;
+            padding: 8px 10px;
+            border-top-left-radius: 6px;
+            border-top-right-radius: 6px;
+            margin-top: 15px;
+            border-bottom: 1px solid #00ffff50;
+        }
+
+        .encryption-menu button,
+        .downloader-menu button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background-color: #00ffff;
+            color: #0d1222;
+            border: none;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 10px rgba(0, 255, 255, 0.3);
+            text-transform: uppercase;
+        }
+
+        /* --- Footer Navigasi Aplikasi Bawah --- */
+        .app-footer-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #000000;
+            border-top: 1px solid #1a2233;
+            display: flex;
+            justify-content: space-around;
+            padding: 8px 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+            z-index: 10;
+        }
+
+        .app-footer-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #999;
+            font-size: 0.7em;
+            padding: 5px;
+        }
+
+        /* Memberi warna hijau khas WhatsApp pada ikon jika aktif (opsional) */
+        .app-footer-nav a .fa-whatsapp {
+            /* Contoh: Mengubah warna menjadi hijau jika aktif */
+            /* Anda dapat menghapus ini jika ingin tetap menggunakan warna default .active */
+            /* color: #25D366; */
+        }
+        
+        /* --- Footer Hak Cipta (Paling Bawah) --- */
+        .copyright-footer {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #0d1222;
+            text-align: center;
+            /* Jarak agar tidak bertabrakan dengan fixed footer nav */
+            margin-top: 2px; 
+            margin-bottom: 70px; /* Diperlukan agar terlihat di atas fixed footer nav */
+        }
+
+        .copyright-footer p {
+            font-size: 0.1em;
+            color: #444; /* Warna abu-abu gelap agar tidak terlalu jelas */
+            font-weight: 300; /* Tipis */
+            opacity: 0.7; /* Sedikit transparan */
+            margin: 0;
+        }
+
+        /* ====================================== */
+        /* --- STYLING UNTUK MODAL (POP-UP) --- */
+        /* ====================================== */
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: none; /* Default tersembunyi */
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto; /* Memungkinkan scroll jika konten panjang */
+        }
+
+        .modal-content {
+            background-color: #1a2233;
+            width: 95%;
+            max-width: 400px; /* Lebar maksimum pop-up */
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.2);
+            position: relative;
+            transform: scale(0.8);
+            opacity: 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #00ffff50;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .modal-header h2 {
+            color: #00ffff;
+            font-size: 1.4em;
+            font-weight: 700;
+        }
+
+        .modal-close {
+            color: #fff;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .modal-close:hover {
+            color: #00ffff;
+        }
+
+        .modal-body h3 {
+            color: #fff;
+            font-size: 1.1em;
+            margin-top: 15px;
+            margin-bottom: 8px;
+            border-left: 3px solid #00ffff;
+            padding-left: 10px;
+        }
+
+        .modal-body p, .modal-body ul {
+            font-size: 0.9em;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .modal-body ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .modal-body li {
+            background-color: #0d1222;
+            padding: 8px 10px;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .modal-body li i {
+            color: #00ffff;
+            margin-right: 8px;
+            margin-top: 2px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="app-header">
+        <div class="header-left">
+            <img src="20251126_071753.jpg" alt="Logo SXYZ RAFF V2" class="header-logo-image">
+            <div class="header-title-container">
+                <div class="app-title">SXYZ RAFF V2</div>
+                <div class="app-subtitle">cyber security</div>
+            </div>
+        </div>
+        <i class="fas fa-bars app-menu-icon" id="menu-toggle"></i>
+    </header>
+    <main class="main-content">
+        <div class="welcome-card">
+            <div class="welcome-box">
+                <div class="blue-bar"></div>
+                <div class="text-content">
+                    <span class="welcome-text">WELCOME</span>
+                    <h1 class="welcome-title">I,AM –<strong>SXYZ RAFF V2</strong></h1>
+                    <p class="welcome-description">I am a cyber security who protects data and privacy</p>
+                    <p>protect the system from attacks </p>
+                </div>
+            </div>
+        </div>
+        <div class="menu-container">
+            <div class="menu-grid">
+                <a href="#" class="menu-item" onclick="openModal('modal-coding', event)">
+                    <i class="fas fa-laptop-code menu-icon"></i>
+                    <span class="menu-label">coding edu</span>
+                </a>
+                <a href="#" class="menu-item" onclick="openModal('modal-malware', event)">
+                    <i class="fas fa-shield-alt menu-icon"></i>
+                    <span class="menu-label">malware</span>
+                </a>
+                <a href="#" class="menu-item" onclick="openModal('modal-cybersec', event)">
+                    <i class="fas fa-lock menu-icon"></i>
+                    <span class="menu-label">cyber security</span>
+                </a>
+            </div>
+        </div>
+        <div class="utility-menu-container">
+            <div class="new-utility-menu utility-box collapsed">
+                <h3 style="display: flex; align-items: center; justify-content: space-between;">
+                    <i class="fas fa-code"></i>
+                    <span style="flex-grow: 1; text-align: left; margin-left: 10px;">source code</span>
+                    <i class="fas fa-arrow-down"></i>
+                </h3>
+            </div>
+        </div>
+        <div class="utility-menu-container">
+            <div class="encryption-menu utility-box collapsed">
+                <h3 style="display: flex; align-items: center; justify-content: space-between;">
+                    <i class="fas fa-lock"></i>
+                    <span style="flex-grow: 1; text-align: left; margin-left: 10px;">encrypt code</span>
+                    <i class="fas fa-arrow-down"></i>
+                </h3>
+            </div>
+        </div>
+        <div class="utility-menu-container">
+            <div class="downloader-menu utility-box collapsed">
+                <h3 style="display: flex; align-items: center; justify-content: space-between;">
+                    <i class="fas fa-cloud-download-alt"></i>
+                    <span style="flex-grow: 1; text-align: left; margin-left: 10px;">tiktok download</span>
+                    <i class="fas fa-arrow-down"></i>
+                </h3>
+            </div>
+        </div>
+       <div class="utility-menu-container">
+    <div class="large-info-box utility-box">
+        <div class="box-content">
+            <h4>9 tool cyber security</h4>
+            <div class="tool-grid">
+                <a href="#" class="tool-item">
+                    <i class="fas fa-hat-wizard tool-icon"></i>
+                    <span class="tool-label">kali linuk</span>
+                </a>
+                <a href="#" class="tool-item">
+                    <i class="fas fa-network-wired tool-icon"></i>
+                    <span class="tool-label">nmap</span>
+                </a>
+                <a href="#" class="tool-item">
+                    <i class="fas fa-search-location tool-icon"></i>
+                    <span class="tool-label">osint framework</span>
+                </a>
+                <a href="#" class="tool-item">
+                    <i class="fas fa-crosshairs tool-icon"></i>
+                    <span class="tool-label">metasploit</span>
+                </a>
+                <a href="#" class="tool-item">
+                    <i class="fas fa-fire-alt tool-icon"></i>
+                    <span class="tool-label">xerosploit</span>
+                </a>
+                <a href="#" class="tool-item">
+                    <i class="fas fa-signal tool-icon"></i>
+                    <span class="tool-label">wireshark</span>
+                </a>
+                <a href="#" class="tool-item">
+                    <i class="fas fa-eye-slash tool-icon"></i>
+                    <span class="tool-label">virus total</span>
+                </a>
+                <a href="#" class="tool-item">
+                    <i class="fas fa-feather-alt tool-icon"></i>
+                    <span class="tool-label">parrot os</span>
+                </a>
+                <a href="#" class="tool-item">
+                    <i class="fas fa-bug tool-icon"></i>
+                    <span class="tool-label">burp suite</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div class="utility-menu-container">
+            <div class="education-box utility-box">
+                <h4><i class="fas fa-graduation-cap" style="color: #00ffff;"></i> Edukasi Keamanan Digital</h4>
+
+                <div class="education-image-container">
+                    -ancaman digital | kemanan system-
+                    </div>
+<ul class="education-list">
+<li><i class="fas fa-key"></i> gunakan kata sandi kuat: kombinasikan huruf besar, huruf kecil, angka, dan simbol. jangan gunakan kata sandi yang sama untuk berbagai akun.</li>
+<li><i class="fas fa-shield-alt"></i> aktifkan autentikasi dua faktor (2fa): 2fa memberikan lapisan keamanan tambahan selain kata sandi anda. selalu aktifkan jika tersedia.</li>
+<li><i class="fas fa-mouse-pointer"></i> waspadai phishing: selalu cek alamat email pengirim dan jangan klik tautan atau lampiran dari sumber yang tidak dikenal atau mencurigakan.</li>
+<li><i class="fas fa-wifi"></i> hati-hati dengan wi-fi publik: hindari melakukan transaksi sensitif (seperti perbankan) saat terhubung ke jaringan wi-fi publik yang tidak aman.</li>
+<li><i class="fas fa-virus"></i> perbarui perangkat lunak secara teratur: pembaruan sering kali berisi tambalan keamanan penting yang melindungi dari kerentanan terbaru.</li>
+</ul>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="copyright-footer">
+        <footer>2025 ©SXYZ RAFF V2</footer>
+    </footer>
+
+    <div class="modal-overlay" id="modal-coding">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-code"></i> Coding Education</h2>
+                <i class="fas fa-times modal-close" onclick="closeModal('modal-coding')"></i>
+            </div>
+            <div class="modal-body">
+                <p>Jelajahi dasar-dasar coding dan bahasa pemrograman yang esensial dalam dunia cyber security. Memahami kode adalah kunci untuk mengidentifikasi kerentanan dan membuat pertahanan yang kuat.</p>
+
+                <h3><i class="fas fa-terminal"></i> Bahasa Pemrograman Penting</h3>
+                <ul>
+                    <li><i class="fas fa-chevron-right"></i> Python: Sangat populer untuk scripting, otomatisasi, dan pengembangan alat keamanan (e.g., *network scanning,
+                      web scraping).</li>
+                    <li><i class="fas fa-chevron-right"></i> C/C++: Penting untuk memahami cara kerja sistem operasi dan aplikasi tingkat rendah, serta menganalisis malware dan reverse engineering.</li>
+                    <li><i class="fas fa-chevron-right"></i> JavaScript/HTML/CSS: Fundamental untuk web application security, memahami kerentanan XSS (Cross-Site Scripting) dan injeksi.</li>
+                    <li><i class="fas fa-chevron-right"></i> SQL: Penting untuk menguji keamanan database dan memahami serangan SQL Injection.</li>
+                </ul>
+
+                <h3><i class="fas fa-lightbulb"></i> Konsep Dasar</h3>
+                <p>Fokus pada struktur data, algoritma, dan pemrograman berorientasi objek (OOP) untuk membangun logika yang efisien dan aman.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-malware">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-virus"></i> Edukasi Malware</h2>
+                <i class="fas fa-times modal-close" onclick="closeModal('modal-malware')"></i>
+            </div>
+            <div class="modal-body">
+                <p>Malware (Malicious Software) adalah ancaman utama. Memahami jenis-jenisnya adalah langkah pertama untuk melindungi diri dan sistem.</p>
+
+                <h3><i class="fas fa-list-ul"></i> Jenis-Jenis Malware</h3>
+                <ul>
+                    <li><i class="fas fa-bug"></i> Virus: Menempel pada file program dan menyebar saat file dieksekusi.</li>
+                    <li><i class="fas fa-horse"></i> Trojan: Menyamar sebagai perangkat lunak legal untuk mencuri data atau memberikan akses belakang.</li>
+                    <li><i class="fas fa-money-bill-wave"></i> Ransomware: mengenkripsi file pengguna dan meminta tebusan untuk mendekripsinya.</li>
+                    <li><i class="fas fa-eye"></i> **Spyware:** Diam-diam mengumpulkan informasi pengguna (kata sandi, aktivitas browsing).</li>
+                </ul>
+
+                <h3><i class="fas fa-hand-paper"></i> Pencegahan Dasar</h3>
+                <p>Selalu gunakan perangkat lunak antivirus/antimalware, hindari mengunduh dari sumber yang tidak terpercaya, dan jangan membuka lampiran email yang mencurigakan.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-cybersec">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-shield-alt"></i> Prinsip Cyber Security</h2>
+                <i class="fas fa-times modal-close" onclick="closeModal('modal-cybersec')"></i>
+            </div>
+            <div class="modal-body">
+                <p>Keamanan siber adalah praktik melindungi sistem, jaringan, dan program dari serangan digital. Ini didasarkan pada konsep **CIA Triad**.</p>
+
+                <h3><i class="fas fa-lock"></i> CIA Triad (Konsep Kunci)</h3>
+                <ul>
+                    <li><i class="fas fa-lock-open"></i> **Confidentiality (Kerahasiaan):** Memastikan data hanya dapat diakses oleh pihak yang berwenang. (*Contoh: Enkripsi, otorisasi.*)</li>
+                    <li><i class="fas fa-check-double"></i> Integrity (Integritas): Memastikan data akurat, lengkap, dan tidak diubah tanpa izin. (Contoh: Hashing, tanda tangan digital.)</li>
+                    <li><i class="fas fa-users-cog"></i> **Availability (Ketersediaan): Memastikan pengguna yang sah memiliki akses ke sistem dan data saat dibutuhkan, (Contoh: Backup, perencanaan pemulihan bencana.)</li>
+                </ul>
+
+                <h3><i class="fas fa-exclamation-triangle"></i> Ancaman Umum</h3>
+                <p>phishing, serangan DDoS (Distributed Denial of Service), dan serangan *Man-in-the-Middle, adalah beberapa ancaman yang harus diwaspadai dalam pengamanan sistem.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fungsi UNIVERSAL untuk membuka modal berdasarkan ID
+        function openModal(modalId, event) {
+            // Mencegah navigasi default link (a href="#")
+            event.preventDefault(); 
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'flex'; // Tampilkan overlay
+            // Tambahkan kelas active untuk memulai transisi pop-up
+            setTimeout(() => {
+                modal.classList.add('active');
+            }, 10); // Penundaan kecil untuk memastikan 'display: flex' diterapkan
+        }
+
+        // Fungsi UNIVERSAL untuk menutup modal berdasarkan ID
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('active'); // Hapus kelas active untuk memulai transisi penutupan
+            // Sembunyikan setelah transisi selesai
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300); // Sesuaikan dengan durasi transisi CSS (0.3s)
+        }
+
+        // Menutup modal jika mengklik di luar konten (overlay)
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target.classList.contains('modal-overlay')) {
+                    closeModal(e.target.id);
+                }
+            });
+        });
+        
+        // Fungsi untuk mengontrol collapse utility boxes (untuk melengkapi fungsionalitas yang ada)
+        document.querySelectorAll('.utility-box h3').forEach(header => {
+            header.addEventListener('click', function() {
+                const utilityBox = this.closest('.utility-box');
+                // Toggle kelas 'collapsed' pada box, kecuali untuk large-info-box dan education-box
+                if (!utilityBox.classList.contains('large-info-box') && !utilityBox.classList.contains('education-box')) {
+                    utilityBox.classList.toggle('collapsed');
+                    const icon = this.querySelector('.fa-arrow-down, .fa-arrow-up');
+                    if (icon) {
+                        if (utilityBox.classList.contains('collapsed')) {
+                            icon.classList.remove('fa-arrow-up');
+                            icon.classList.add('fa-arrow-down');
+                        } else {
+                            icon.classList.remove('fa-arrow-down');
+                            icon.classList.add('fa-arrow-up');
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
